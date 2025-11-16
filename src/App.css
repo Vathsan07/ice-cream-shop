@@ -1,0 +1,199 @@
+/* App / layout */
+:root{
+  --bg:#fffaf2;
+  --card:#ffffff;
+  --muted:#667085;
+  --accent:#ff7aa2;
+  --accent-2:#ffbf69;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 6px 18px rgba(15,15,30,0.08);
+  --radius:12px;
+  --max-width:1100px;
+  --gap:18px;
+  font-synthesis: none;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg,#fffaf2 0%, #fff7f0 55%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:32px;
+}
+
+/* App container */
+.App{
+  max-width:var(--max-width);
+  margin:0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
+  border-radius:calc(var(--radius) + 6px);
+  padding:28px;
+  box-shadow:var(--shadow);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* Ice cream shop main */
+.icecream-shop{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:var(--gap);
+  align-items:start;
+}
+
+/* Header */
+.shop-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:12px;
+}
+.shop-header h1{
+  margin:0;
+  font-size:1.6rem;
+  letter-spacing:-0.02em;
+}
+.shop-sub{
+  color:var(--muted);
+  font-size:0.95rem;
+}
+
+/* Product grid */
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:16px;
+}
+
+/* Product card */
+.product-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+  box-shadow:0 6px 16px rgba(15,23,42,0.06);
+  border:1px solid rgba(15,23,42,0.03);
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.product-card:hover{ transform: translateY(-6px); box-shadow:0 14px 36px rgba(15,23,42,0.09); }
+
+.product-image{
+  height:120px;
+  border-radius:10px;
+  background: linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:1.1rem;
+  text-align:center;
+}
+
+/* Product info */
+.product-title{ font-weight:600; margin:0; font-size:1rem; }
+.product-desc{ color:var(--muted); font-size:0.88rem; margin:0; }
+.product-price{ margin-top:auto; font-weight:700; font-size:1.05rem; }
+
+/* Quantity controls */
+.qty-controls{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.qty-controls button{
+  height:36px; min-width:36px;
+  border-radius:8px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  font-weight:700;
+  color:var(--accent-2);
+}
+.qty-display{
+  min-width:40px;
+  text-align:center;
+  padding:6px 10px;
+  border-radius:8px;
+  background:var(--glass);
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+/* Order panel / form on right */
+.order-panel{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(15,23,42,0.03);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.order-panel h3{ margin:0; font-size:1.05rem; }
+.form-field{ display:flex; flex-direction:column; gap:6px; }
+.form-field label{ font-size:0.85rem; color:var(--muted); }
+.form-field input, .form-field textarea, .form-field select{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(15,23,42,0.06);
+  background:transparent;
+  outline:none;
+  font-size:0.96rem;
+}
+.form-field textarea{ resize:vertical; min-height:80px; }
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:0;
+  cursor:pointer;
+  font-weight:600;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{
+  background: linear-gradient(90deg,var(--accent) 0%, #ff6c8f 60%);
+  color:#fff;
+  box-shadow: 0 8px 24px rgba(255,122,162,0.18);
+}
+.btn-secondary{
+  background:transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  color:var(--muted);
+}
+
+/* Totals and confirmation */
+.totals{
+  display:flex; justify-content:space-between; align-items:center;
+  font-weight:700;
+  margin-top:6px;
+}
+.order-success{
+  background: linear-gradient(90deg,#e6fff6,#f0fff9);
+  padding:10px;
+  border-radius:8px;
+  color:#064e3b;
+  border:1px solid rgba(6,78,59,0.08);
+}
+
+/* Responsive */
+@media (max-width:980px){
+  .icecream-shop{ grid-template-columns:1fr; }
+  .product-grid{ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  body{ padding:20px; }
+}
+
+/* Utility */
+.text-muted{ color:var(--muted); font-size:0.9rem; }
+.small{ font-size:0.85rem; color:var(--muted); }
+.center{ text-align:center; }
