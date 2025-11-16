@@ -64,7 +64,8 @@ export default function IceCreamShop() {
     const payload = buildPayload(orderId);
     setProcessing(true);
     try {
-      const res = await fetch('http://localhost:5001/api/submitOrder', {
+      //const res = await fetch('http://localhost:5001/api/submitOrder', {
+      const res = await fetch('/api/submitOrder', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
